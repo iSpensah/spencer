@@ -1,0 +1,55 @@
+the scalability of application - scalabe should be high.. 
+on a higher scale based of how many uses.
+
+https://stackblitz.com/edit/react?file=src%2FApp.js
+https://stackblitz.com/edit/react
+npx create-react-app reactapp1
+npm -v
+npm config rm proxy 
+npm config rm https-proxy
+npx create-react-app reactapp1
+
+react use virtual dom 
+virtual dom is faster that real dom. 
+more scalable 
+compnent based user interface 
+--> reusability 
+--> unit testing of app will be easy 
+--> compnents are isolated for each other 
+
+jsx-makes code more readable or easy to write
+one way data .
+react  babel - compiler which translates jsx to javascript.
+
+web pack -> bundles all the packages whic we are going to use. 
+-> bundler usees virtual dom. performace wise. scalability.
+
+react is going ta take care of the view part of your application. 
+
+tree structure of elemets created of the page 
+
+two types of compnents // used  
+1.functional component
+plain javascript function 
+can store state directly in compnent
+2. class component.
+nothing but a clas extended from react.component
+can store state directly
+state is   date stored within the compnent
+
+props-> input paramters.
+helps to pass data from one compnent to other component
+cannot update state
+
+attributes of  component. <App name ="Swati" subject="React"/>, 
+//props are nothing but compnent attributes
+
+components examples
+<Menu/>  crreating using function
+<App/>  created using class
+<App1/> created using class
+
+components are redenred through render() syntax ex. root.render()
+constructor is the first method to call.
+hence it is recommentd to define state only within constructor so that 
+while accessing it it wont be undefined state

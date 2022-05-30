@@ -1,0 +1,22 @@
+functional components cannot store the state. 
+react hooks enable you to do this
+
+
+1. React Hooks are functions that hooks into react state of function componenct
+will not work inside class component. only function component
+
+useState() 
+rules: 
+-call this hooks at the top level 
+1. call react hooks at the top level. 
+not inside any loop,nested functions 
+2. don't call react hooks in loop, conditional statements, nested functions. 
+maintin the order of recact called. 
+3. you can not call react hooks from regular javascript functions. 
+it should only be called from react functions only 
+4. can be called from custom hooks. 
+
+
+
+controlled form - the data is handled by the component
+unconctrolled form - the data is hadled by the DOm
