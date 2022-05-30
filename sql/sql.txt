@@ -1,0 +1,248 @@
+sql command line 
+user: system
+password: atos123$
+
+Create table EmployeeInfo
+(
+eid numeric unique not null,
+ename varchar(10) not null,
+ecity varchar(10) constraint chkeCity check(ecity in ('Phoenix','N-york', 'Miami')),
+ephone varchar(10) constraint chkephone check(ephone like '([0-9][0-9][0-9])[0-9][0-9][0-9][0-9][0-9]'),
+esalary numeric constraint chkesalary check(esalary>500),
+depid varchar(10) not null
+);
+
+drop table employeeinfo;
+
+
+
+insert into EmployeeInfo values(1011,'George','Miami','9090933',10000,'D001');
+insert into EmployeeInfo values(1012,'Antham','Phoenix','9090922',12000,'D002');
+insert into EmployeeInfo values(1013,'Jonathan','N-York','9090444',13000,'D001');
+insert into EmployeeInfo values(1014,'Samuel','N-York','9090966',20000,'D002');
+insert into EmployeeInfo values(1015,'Ajay','Miami','9090111',14000,'D001');
+insert into EmployeeInfo values(1016,'Abraham','Phoenix','9030909',10000,'D001');
+insert into EmployeeInfo values(1017,'Vinit','Miami','7790909',8000,'D003');
+insert into EmployeeInfo values(1018,'Santa','Phoenix','4490909',9000,'D001');
+insert into EmployeeInfo values(1019,'Paul','Miami','9044309',18000,'D002');
+insert into EmployeeInfo values(1020,'Tushar','N-York','8990909',10500,'D001');
+insert into EmployeeInfo values(1021,'Tim','Miami','6590909',22000,'D003');
+
+
+
+1) List all employees from phoenix citySELECT * from employeeinfo where ecity = 'Phoenix'
+2) List all employees from phoenix and N-yorkSELECT * from employeeinfo where ecity = 'Phoenix' or ecity = 'N-York'
+3) List all employees from phoenix having salary greater than 10000SELECT * from employeeinfo where ecity = 'Phoenix' and esalary > 10000
+4) List all employees from N-York and Miami having salary between 10000 and 15000SELECT * from employeeinfo where (ecity = 'Miami' or ecity = 'N-York')
+and esalary between 10000 and 15000
+5) List all employees not living in phoenixSelect * from Employeeinfo where ecity != 'Phoenix'Select * from Employeeinfo where not ecity = 'Phoenix'Select * from Employeeinfo where ecity <> 'Phoenix'
+ 
+6) Display name and salary of employees living in N-York
+	//select ename, esalary from Employeeinfo where ecity  ='N-york'  //tama to 
+7) Display Name and phone of employees having salary > 15000		// tama to
+	//select ename, ephone from EmployeeInfo where esalary > 15,000   
+8) Count total number of employees living in N-York 			//tama to 
+	//select Count(*) as Total_N_York_Employees from Employeeinfo where city = 'N-York';
+	SELECT COUNT(*) FROM table_name;  
+9) display average salary of employees living in Miamai
+	// select round(avg(esalary),0) as Average_salary_Miami from EmployeeInfo where city ='Miami'; //tama to
+	
+10) display report as below (tax is 10% of salary)
+eid Name salary tax
+
+Select
+eid,
+ename,
+esalary ,
+esalary * 0.10 as Tax
+from
+employeeinfo
+
+
+
+Select
+eid,
+ename,
+esalary ,
+esalary * 0.10 as Tax,
+esalary - (esalary * 0.10) as Net_Salary
+from
+employeeinfo
+
+
+11) List all employee living in the city of John
+select * from employeeinfo where ecity = (select ecity from employeeinfo where ename = 'John') and ename != 'John'
+
+12.) update salary of each employee living in n-york by 500
+update EmployeeInfo set esalary = esalary+ 500'where ecity = 'N-York';
+
+13.)update city of john to 'Delhi'
+update EmployeeInfo set = 'ecity' where enam = 'john';
+
+14.) update salary of employees by 500 who lives in n-york or phoenix
+update Employeeinfo set esalary = esalary +500  where ecity = 'N-york' || 'Phoenix' ;
+
+15.) delete all employees having less than 10,000 salary
+delete from employeeinfor where esalary < 10,000
+
+16) delete all employees living in city of George
+
+// cannot use equal sign if queries return multiple values but rather 
+use in    (in the list)
+
+delete from employeeinfo where ename in (
+Select ename from employeeinfo where ecity = (
+Select ecity from employeeinfo where ename = 'George')
+and ename <> 'George')
+
+commit - to save permanently 
+set auto commint on;
+insert into employeeinfo values () 
+in sql CLI; 
+
+17.) How many cities our employee come from 
+select distinct (ecity) from employeeinfo;
+select unique(ecity) from employeeinfo;
+
+18.) insert into Employeeinfo values (); 
+
+select * from EmployeeInfo;
+
+19.) name of Employee having max salary   // using aggregate functions
+select ename, esalary  from employeeinfo where esalary =(
+select  max (esalary)  from employeeinfo);
+
+20.) list of employee from phoenix in ascending order   //using order by clause
+select * from employee info where ecity = 'Phoenix' order by esalary, ename;
+select * from employee info where ecity = 'Phoenix' order by esalary desc;
+
+21.) List all employees having alphabet "a" in their name    //learning wilcards, Learning LIKE OPERATOR
+select * from employeeinfo where ename like '_a%';  
+
+22.) List all employee having  3 rd character int the range of a to e
+
+23.) select upper(ename) As UPPER from employeeinfo;
+
+24.) select 20+30 from dual
+
+25.) select cos(0) from dual
+
+26.) select sqrt(9) from dual
+
+27.) select sysdate + 20 from dual 
+
+
+GOODBYE CLAUSE JOIN CLAUSE, ALTER COMMANDS
+//order by clause is not regulary used in business
+//AS is optional
+//alternative quote operator 
+
+Group BY: 
+17. ) count total employee for each city select ecity, count(eid) from employeeinfo  group by ecity;
+select ecity, count(eid) from  employeeinfo  group by ecity;
+
+18.) Total salary expense for each department
+select depid ,sum(esalary) as Total_Spend from employeeinfo group by depid;
+
+19.) count total number of employees in each department order by total emp
+select depid, count(ename) as Total_Emp from employeeinfo group by depid order by Total_Emp;
+
+20.) Get Department wise count of employees and also expense on salary
+salary Select depid, count(*) as Total_Employees, sum(esalary) as Total_Expense from employeeinfo
+group by depid
+
+21.) list count of employees each department has Count only if total number of employees if more
+than 2 
+
+select depid, count(*) as Total_Employees from employeeinfo group by depid having count(depid )
+> 2; 
+
+
+
+[10:36 AM] Rajput, Mahesh
+
+17) Count total emplouees for each city.
+--order by --ascending and descending order
+--group by -- summary reportSelect count(eid) from employeeinfoSelect
+ecity,
+count(eid) as Total_Employees
+from
+employeeinfo
+group by ecity18) Total salary expense for each department
+Select
+depid,
+sum(esalary) as Total_Spend
+from
+employeeinfo
+group by depid19) Count total number of employees in each department
+Select
+depid,
+count(*) as Total_Employees
+from
+employeeinfo
+group by depid
+order by Total_Employees desc20) Get Department wise count of employees and also expense on salary
+Select
+depid,
+count(*) as Total_Employees,
+sum(esalary) as Total_Expense
+from
+employeeinfo
+group by depid
+21) list count of employees each department has. Count only if total number of employees are more
+2Select
+depid,
+count(eid) as Total_Employees
+from
+employeeinfo
+group by depid
+having count(eid) > 2
+
+=============================================================
+DDL,DML,DQL
+create table
+drop table
+delete table
+select
+distinct
+unique
+not null, check , unique
+order by
+group by
+having
+insert , update and delete
+sub queries
+aggregate -max,min,count,average,sum,sqrt
+queries using dual --
+arithmetic operations in select statement
+calculated columns============================================================
+--SET operationcreate table EIndia
+(
+eid numeric,
+ename varchar(10),
+esal numeric
+);insert into EIndia values(1,'A',1000);
+insert into EIndia values(2,'B',1000);
+insert into EIndia values(3,'C',1000);create table EUSA
+(
+eid numeric,
+ename varchar(10),
+esal numeric
+);insert into EUSA values(100,'X',2000);
+insert into EUSA values(200,'Y',2000);
+insert into EUSA values(300,'Z',2000);
+insert into EUSA values(3,'C',1000);Set-operators:
+union --> unique set of records
+union all --> gives all records // 
+intersect --> common rows from set of tables ////display same record only from both tables
+minus -- first table rows minus second table rows or unique records of first table with second tableSelect * from EIndia
+minus
+Select * from EUSA;
+
+
+
+22.) list all employees having no hobbies
+
+select e.ename from employee e left outer join ehobby h on e.ied = h.eid where h.hname is null
+
+

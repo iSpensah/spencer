@@ -1,0 +1,110 @@
+[11:37 AM] Rajput, Mahesh
+package fundamentals;import java.util.Scanner;public class Employee { int eid;
+String ename;
+String ecity;
+int esalary;
+String eHobby[];
+Address eAddress;
+public void storeData(int eid,String ename,String ecity,int esalary, Address eAddress)
+{
+this.eid = eid;
+this.ename = ename;
+this.ecity = ecity;
+this.esalary = esalary;
+eHobby = new String[5];
+eHobby[0] = "PVG";
+eHobby[1] = "Travelling";
+eHobby[2] = "BB";
+this.eAddress = eAddress;
+}
+public void displayData()
+{
+System.out.println("Employee ID : " + eid);
+System.out.println("Employee Name : " + ename);
+System.out.println("EmployeeCity : " + ecity);
+eAddress.displayAddressData();
+System.out.println("Employee Salary : " + esalary);
+double taxamount = getTax(esalary);
+System.out.println("Total Tax :" + taxamount);
+System.out.println("Net Salary : " + (esalary - taxamount)); System.out.print("Employee Hobbies : " );
+for(int cnt=0; cnt < eHobby.length; cnt++)
+{
+System.out.print(eHobby[cnt] + " ");
+}
+}
+public double getTax(int esalary)
+{
+return esalary * 0.20;
+}
+
+
+
+public static void main(String s[])
+{
+Scanner scanner = new Scanner(System.in);
+int empid = scanner.nextInt();
+String ename = scanner.next();
+String ecity = scanner.next();
+int esalary = scanner.nextInt();
+
+String street = scanner.next();
+String state = scanner.next();
+String pincode = scanner.next();
+
+
+Address eAddress = new Address();
+eAddress.storeAddressData(street, state, pincode);
+
+Employee objEmployee = new Employee();
+objEmployee.storeData(empid,ename,ecity,esalary,eAddress);
+
+objEmployee.displayData();
+}
+}
+
+
+
+
+
+
+
+
+Assignment - 3 -- Bank Applicationclass --->
+1) Customer Class --> cid, cname, cphone---array , cAccount
+2) Account Class --> accid, accbalance, accpin
+3) Address --> stree, state, country and pincodeEach above class must have functions to store and display data. Scan values for each data of respective classess.
+
+
+Assignment - 3 -- Bank Application
+
+
+
+class --->
+1) Customer Class --> cid, cname, cphone---array , cAccount
+2) Account Class --> accid, accbalance, accpin
+3) Address --> stree, state, country and pincode
+
+
+
+Each above class must have functions to store and display data. Scan values for each data of respective classess.
+
+
+
+
+Assignment - 4 -- Bank Application with inheritance
+
+
+
+class --->
+1) Customer Class --> cid, cname, cphone---array , cAccount
+2) Account Class --> accid, accbalance, accpin
+---SavingAccount ---- InterestRecived, OverDraft
+---LoanAccount --- PrincipalLoanAmount, MonthlyEMI , TotalLoanDuration, InterestApplied
+3) Address --> stree, state, country and pincode
+
+
+
+Each above class must have functions to store and display data. Scan values for each data of respective classess.
+Establish inheritance relationship between Account and SavingAccount class. Also do same for LoanAccount class
+
+

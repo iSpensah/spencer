@@ -1,0 +1,13 @@
+How to add Libraries jar file, 
+right click on project
+click build path 
+configure build path 
+click on libraries tab 
+clik on class path 
+clik add external jar files 
+get file from  C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib  (ojdbc5) 
+after that click apply and close 
+
+
+getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "atos123$");
+paste in jdbc:oracle:thin:@localhost:1521:XE

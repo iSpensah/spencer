@@ -1,0 +1,56 @@
+create table Course ( --parent table
+	courseid numeric primary key not null,
+	coursename varchar (30) not null, 
+	coursefees numeric constraint chkfees Check(coursefees >0)
+);
+
+insert into course values (1,'Java',10000);
+insert into course values (2,'Oracle',20000);
+insert into course values (3,'C++',5000);
+insert into course values (4,'HTML/CSS',3000);
+insert into course values (5,'C#',15000);
+insert into course values (6,'ASP.Net',16000);
+
+create table Student ( --child table of course / parent table of payment
+	studid numeric primary key not null,
+	name varchar(30) not null, 
+	city varchar (30) not null, 
+	phone varchar (30) not null,
+	courseid numeric references Course(courseid)
+);
+
+insert into student values (01,'spencer','N-York','09458873649','1');
+insert into student values (02,'john','Miami','09458873649','4');
+insert into student values (03,'tim','Phoenix','09478873649','3');
+insert into student values (04,'george','N-York','09456873649','2');
+insert into student values (05,'drake','N-York','09448873649','1');
+insert into student values (06,'van','Miami','09458871649','4');
+insert into student values (07,'lance','Miami','09758873649','2');
+insert into student values (08,'josh','Phoenix','09458373649','3');
+insert into student values (09,'vince','N-York','09458473649','1');
+insert into student values (10,'boggart','Phoenix','09459873649','2');
+insert into student values (11,'alvin','Phoenix','09457873641','4');
+
+select * from student;
+drop table payment;
+drop table student;
+drop table course;
+truncate table student;
+
+create table Payment ( --child table of student
+	payid numeric primary key,
+	payamount numeric constraint chkpamount Check (payamount >0),
+	studid numeric references Student(studid)
+);
+
+insert into payment values(1,10000,07);
+insert into payment values(2,20000,04);
+insert into payment values(3,5000,08);
+insert into payment values(4,3000,03);
+insert into payment values(5,5000,01);
+insert into payment values(6,10000,07);
+insert into payment values(7,2000,08);
+
+select * from  course;
+select * from student;
+select * from payment;

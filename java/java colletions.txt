@@ -1,0 +1,11 @@
+data collections
+data structure
+
+auto boxing
+auto unboxing 
+boxig 
+unboxing
+wrapper types. Integer,  
+
+list can store object only 
+convert to wrapper type then concert to primitive type to perform arithmetic operations

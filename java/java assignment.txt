@@ -1,0 +1,28 @@
+6) JDBC based bank Application (Group Activity)
+
+
+
+Menu based bank application.
+
+
+
+create following tables
+1) Account -- accid (pk), accpin and accbalance
+2) Customer -- cid (pk), cname, city, accid(fk)(uk)(NN)
+3) transaction - tranid(pk), tranamount, trantype, accid(fk)
+
+
+
+insert 10 sample data in account and customer table.
+
+
+
+Implement below functionality and create menu driven application.
+
+
+
+1) search customer with account number . On successfull search show customer details and his account details
+2) write cashdeposit function which should take accno,pin and amount to amountToDeposit
+3) write cashwithdraw function which should take accno,pin and amount to amountToWithdraw
+4) If amount of withdraw is more than balance... then application should give error.during withdraw function.
+5) if pin provided is not valid then application should give error while cashwithdraw and deposit.

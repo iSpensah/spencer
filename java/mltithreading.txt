@@ -1,0 +1,46 @@
+multithreading. 
+time slicing 
+
+multi processing
+-every process run in a different memory 
+multithreading
+-thread are ppart of a /the process
+- thread do not occupy it's own space
+-thread are part of that same process/ takes up process memory/ doesnt take new memory 
+multitasking - 
+
+
+by defaul java is only single process and single thread which is the main thread
+other is garbage thread
+
+userdefined thread 
+two ways of implementing thread 
+1.0 -create a class that extends to a thread
+ex. class FirstThread extends Thread
+whenever you create a thread a thread executes a responbibility 
+whenever you extend Thread class you must override the run method//or provide a body// must be declare as public
+2.) -implements a runnable interface
+ex. implements runnable
+create constructor create object  Thread t = new Thred(this);
+t.start();
+
+
+to run the thread 
+create object then use start() 
+ex. f.start();
+dont directly call the run method but rathrer use start()
+
+thread to run simultaneously
+threads are not fixed in terms of time splicing 
+processes opens and close
+threads run at the same time, deletes memomery that are not used, checks
+every second. if not used deletes it.
+
+
+Linked List
+features of java 
+garbae collector
+poloymorphism
+secure 
+multi platform 
+pre defeined libraries

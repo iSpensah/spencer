@@ -1,0 +1,26 @@
+--->Throwable
+Inherit from RuntimeException 
+--->Exception (Checked Exceptions) (Compile Time)
+------>SQLExeption 
+------>InterruptedException
+
+
+inherit from Exceptions
+---->Runtime Exception(unchecked exceptions) (RunTime)
+---->InputMismatch 
+--->Arithmetic 
+----->NullPointer
+---->Error Class
+
+Keywords
+try 
+catch
+finally 
+throw
+throws 
+checked --->compile time
+unchecked ---> run time
+throwable
+
+
+thousands of exception

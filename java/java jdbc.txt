@@ -1,0 +1,35 @@
+java database conectivity 
+java.sql
+jdbc
+
+need to know
+location of oracle
+port of oraccle : 1521
+will depend and ask project manager the database details
+
+1. check availability of database
+
+when you go to a project 
+database may be in a remote machine
+so nned to know the database first
+2. jdbc library
+3. package caled jdbc Example
+4. class called jdbcExapmle
+5.sample sql table with data 
+
+
+steaps 
+a. connection to database
+e.printStackTrace();
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+
+
+static methods we dont need to create object
+of the claass if the method is set to static
+
+ex. DriverManager.getConnection();
+jdbc:oracle:thin:@localhost:1521:XE
+
+Connection class
+Statement class

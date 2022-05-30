@@ -1,0 +1,76 @@
+SQL Assignment
+create below tables
+----------------------
+Course
+Columns -->courseid, coursename, coursefees
+courseid --> Primary key
+coursename --> must not allow null
+coursefees ---> must be greater than zero
+
+
+--> Insert few rows in CourseTable
+------------------------------------------------------
+Student
+columns --> studid(pk), name--not null, city not null, phone not null, courseid(fk)
+
+insert 10 rows for student table
+--------------------------------------------------------
+
+Payment
+columns --> payid(pk), payamount , studid(fk)
+insert multiple rows in payment table
+---------------------------------------------------------
+
+
+
+
+
+
+create table Course (
+	courseid numeric primary key not null,
+	coursename varchar (30) not null, 
+	coursefees numeric constraint chkfees Check(coursefees >0)
+);
+
+create table Student (
+	studid numeric primary key not null,
+	name varchar(30) not null, 
+	city varchar (30) not null, 
+	phone varchar (30) not null,
+	courseid numeric references Course(courseid)
+);
+
+create table Payment (
+	payid numeric primary key,
+	payamount numeric constraint chkpamount Check (payamount >0),
+	studid numeric references Student(studid)
+);
+
+1) List all students who enrolled for Java course
+2) List all students who are not staying in N-York
+3) Total number of student living in N-York and Pheonix
+4) Name of the costliest course
+5) count unique cities of students
+6) Count of students in each city
+7) Name of city having maximum students
+8) print following report
+studid cname cfees
+9) print coursename and total students enrolled for each course
+10) Print course details in the order on fees (ascending)
+11) print following report
+studid , coursename , coursefees, payamount
+12) update fees by 500 for all courses having fees less than 5000
+13) delete all those courses which do not have any students
+14) Print name and phone of students, who have not done any payment
+15) print all students whose name starts with letter "A"
+16) 9) print coursename and total students enrolled for each course.
+ (Count only those courses where total enrolled students are more than 3)
+17) print following report
+studentid coursename coursefees paidfees pendingfees
+18) Count total number of student who paid some fees
+19) Update coursefees of all courses by 8%
+20) Count students who enrolled for Java and C# course
+
+
+
+select depid, count(eid) as Total_Employees from employeeinfo group by depid having count(depid )> 2;   

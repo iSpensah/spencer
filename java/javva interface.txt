@@ -1,0 +1,25 @@
+Interface 
+
+annotations provide information about a function, class, ex. @Override
+
+method Overriding
+method Overloading // ex. implmenting methods with changing arguments 
+
+Interface Shape {
+
+	void area();
+	}
+
+class Circle implements Shape(){
+
+@Override public void area(){}  //overriding the method area
+
+public void area(int radius){} //overloading the method area
+
+public void area(int radius, String str){}  //overloading the method area
+}
+
+Test Cases -- calculator  calci(int,int,String);
+1.) 
+
+runtime error compile time error

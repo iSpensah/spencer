@@ -1,0 +1,124 @@
+2 types 
+compile time error
+runtine time error
+
+null pointer exception, not allocating memory to object, array
+
+when creating array always initialize ex. new String[5] //will hvae a 5 elements
+if you dont initialize youll get null pointer exception
+
+all classes gets initialized to null
+String is null
+int,float,double is zero
+
+variables in class gets auto initialized
+local variable cannot get auto initialized otherwise  outputs errors
+
+inherticance /Hierarchy of a class
+build to save time and memommry 
+Parent and Child class.
+
+the parent will hold the common variables
+the child class will have special variables
+
+super is used to read something from a super class
+is a ("issa") relationship
+Spencer is a car
+inheritance a mechanism that follows an hierarchy of classess
+parent will hold common things while the child hold specialized things
+child class extends parent class
+memomry management
+
+to acces functions and properties of a class
+if you create the object of the class you can access 
+when you inherit/extend.  
+
+access specifiers --> public privated protected and deafult
+public members -->> accessible within package and outside package by creating 
+object or inheritance 
+private members --> are only accessible in declared class. 
+protected members -->> accessible with package like public. But outside 
+it is accessible only thry inheritance and not by object.
+default or package scope --> behaves like public within package and out side package it behave like private.
+
+access modifiers. 
+static abstract final volatile
+static - are used to share memory; static variables are shared variables
+static - are used to share memory; static dont need object to call functions
+static class - sharing
+static 
+		----variable-- are shared variable among objects 
+		----function -- can be accessed using class name 
+		---class -- only inner class can be static and all member of that class will be static 
+
+final are constant ---- cannot be overriden by child class then parent class makes their function final 
+		---variable are constants in java. cannot reassign values 
+		---- stopping inheritance we make final classes
+		
+Inheritance.
+Overriding -- hiding the functionality of the base class or parent class
+child will always have the parent
+
+parent will sometimes keep restrictions from the child
+child can use the parents function but cannot change the parents function so child will override unless the function is final in the parent class.
+
+variable wise 
+function wises
+
+--> public private protected and default
+public members --> accessible within package and outside package by creating object or inheritance
+private members --> are only accessible in declared class.
+protected members --> accessible within package like public. But outside package it is accessible only thru inheritance and not by object.
+default or package ---> behaves like public within package and out side package it behave like private
+
+
+
+by creating object or inheritance
+Access modifiers
+static-
+---variable --are shared variable among objects
+---function -- can be accessed using class name
+---classes --- only inner classes can be static and all members of that class with be static
+final
+--variable are constants in java. cannot reassign value.
+--function ---> cannot be overridden by child class , but can be accessed
+--classes-----> final classes cannot be inherited
+
+abstract controls the behavior of child chass
+abstract used to design top level class
+when we inherit abstraction function we write logic
+
+InterFace ---> type in java; nothing but abstract functions
+functions are by default is abstract
+we cnannot write non-abstract functions
+functions should be always be public
+also to do top level design class
+implments mulitple level inheritance. implemts interface
+one interface can inheirt another interface throught extends.
+as well as a class can inherit another class through extend
+
+Access specifiers
+--> public private protected and default
+public members --> accessible within package and outside package by creating object or inheritance
+private members --> are only accessible in declared class.
+protected members --> accessible within package like public. But outside package it is accessible only thru inheritance and not by object.
+default or package ---> behaves like public within package and out side package it behave like private
+
+by creating object or inheritance
+
+Access modifiers
+static-
+---variable --are shared variable among objects
+---function -- can be accessed using class name
+---classes --- only inner classes can be static and all members of that class with be static
+final
+--variable are constants in java. cannot reassign value.
+--function ---> cannot be overridden by child class , but can be accessed
+--classes-----> final classes cannot be inherited
+
+abstract
+------------variable---not available
+------------abstract function do not have implementation (no body to function)
+extends ----for class inheritance
+implements--- for interface inheritance
+override --- to write same signature function in child class.

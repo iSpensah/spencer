@@ -1,0 +1,73 @@
+
+
+create table Person(
+pid numeric unique not null, 
+pname varchar(30) not null ,
+pcompany varchar(30) not null,
+pprice numeric not null,
+pcategory varchar(30) not null
+)
+Tasks
+1) create table product with pid, pname, pcompany, pprice, pcategory
+2) pid should be unique , not null
+3) all columns must have values
+4) all prices must be positive
+5) insert sample 10 records in database
+
+
+
+Queries
+1) Display all product details where price is less than 10$
+2) Display all product of company Apple
+3) display all products having price greater than 10$ and company "Apple"
+4) Display total number of products sold by "Apple"
+
+
+
+5) Display all products having category "Toys" in ascending order of their price     
+6) Display the name of costliest product (Sub-query example, nested queries) max function
+7) Which is the cheapest product  //use minimum function 
+
+
+
+
+create table Product(
+pid numeric unique not null, 
+pname varchar(30) not null,
+pcompany varchar(30) not null,
+pprice numeric not null constraint chkpprice check(pprice > 0),
+pcategory varchar(30) not null
+);
+
+drop table Product;
+truncate table product;
+select * from product;
+
+insert into Product values(1,'ipod','Apple',100,'Gadgets');
+insert into Product values(2,'phone','Apple',50,'Gadgets');
+insert into Product values(3,'TV','sanyo',600,'Appliances');
+insert into Product values(4,'Washing Machine','Samsung',300,'Appliances');
+insert into Product values(5,'Skateboard','Mohawk',50,'Toys');
+insert into Product values(6,'Transformers','Hasbro',20,'Toys');
+insert into Product values(7,'Gameboy','Apple',100,'Toys');
+insert into Product values(8,'Fan','Samsung',100,'Gadgets');
+insert into Product values(9,'watch','Apple',100,'Gadgets');
+insert into Product values(10,'Mouse','Samsung',9,'Accesories');
+insert into Product values(11,'Mouse','Samsung',-500,'Accesories');
+
+select * from product;
+
+select * from product where pprice < 10;      
+select * from product where pcompany = 'Apple';
+select * from product where pprice >10 and pcompany = 'Apple' ;
+select count(*) from product where pcompany = 'Apple';
+select * from product where pcategory = 'Toys' order by pprice asc;
+select pname As costlietst_Product from product where pprice = (select  max(pprice) from product);
+select pname As cheapest_Product from product where pprice = (select  min(pprice) from product);
+
+
+varchar 2(size)
+char 
+
+
+

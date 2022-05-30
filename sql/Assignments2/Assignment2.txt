@@ -1,0 +1,21 @@
+1.)	select s.name from student s join course c on c.courseid = s.COURSEID where c.COURSENAME = 'Java';
+2.)	select * from student where city != 'N-York'; 
+3.)	select count(name) as total_Number from student where city in ('N-York','Phoenix'); 
+4.)	select coursename as costliest_course from course where coursefees = (select max(coursefees) from course); 
+5.)	select count(distinct city) from student; 
+6.)	select city, count(city) from student group by city; 
+7.)	select city from student group by city having count(city) = (select max(count(city)) from student group by city); 
+8.)	select s.studid, c.coursename, c.coursefees from student s join course c on c.courseid = s.courseid; 
+9.)	select c.coursename, count(name)as total_students_enrolled from course c join student s on c.courseid = s.courseid group by c.coursename;
+10.)	select * from course order by coursefees asc;
+11.)	select s.studid,c.coursename, c.coursefees, p.payamount from course c inner join student s
+on c.courseid = s.COURSEID inner join payment p on s.studid = p.studid;
+12.)	update course set coursefees=coursefees+500 where coursefees < 5000;
+13.)	delete from course where coursename in (select c.coursename from student s right outer join course c on s.COURSEID = c.COURSEID where name is null);
+14.)	select s.name, s.phone from student s left outer join payment p on s.studid = p.studid where p.payamount is null;
+15.)	Select name from student where name like 'a%';
+16.)	select coursename, count(name) from course c join student s on c.courseid = s.courseid group by coursename having count(name) >3;
+17.)	Select s.studid, c.coursename, c.coursefees, p.payamount, c.coursefees - p.payamount as PendingFees from Student s join course c on s.courseid = c.courseid join Payment p on p.studid = s.studid;
+18.)	select count(name) as total_Students_that_Paid from student s join payment p on s.studid = p.studid;
+19.)	update course set coursefees = coursefees * 0.8;
+20.)	select count(name) from student s join course c on s.courseid = c.courseid where coursename in ('Java','C#');

@@ -1,0 +1,276 @@
+[1:27 PM] Rajput, Mahesh
+=====================================================
+Joins
+-----equi,natural
+======================================================
+--> below query generates carticean output (first table multiple by second table rowsSelect
+ename,
+ecity,
+hname
+from
+employee, ehobbySelect
+ename,
+ecity,
+hname
+from
+employee, ehobby
+where
+employee.eid = ehobby.eid
+Select
+ename,
+ecity,
+hname
+from
+employee e, ehobby h
+where
+e.eid = h.eid
+Select
+e.ename,
+e.ecity,
+h.hname,
+e.eid
+from
+employee e, ehobby h
+where
+e.eid = h.eidSelect
+e.ename,
+e.ecity,
+h.hname,
+e.eid
+from
+employee e
+join
+ehobby h
+on
+e.eid = h.eid
+
+[1:28 PM] Rajput, Mahesh
+create table CustomerDetail
+(
+customerid numeric,
+customername varchar(30),
+customercity varchar(30),
+customerphone varchar(10),
+customeremail varchar(30),
+customerdob varchar(10)
+);SQL-Structured query languageDifferent categories of SQL command
+DDL > Data definition lanugage ---create table, drop
+DML > Data manupulation language --insert, update and delete
+DQL > Data query language -select
+DTL > Data transactional language//DDL
+Create table EmployeeInfo
+(
+eid numeric,
+ename varchar(10),
+ecity varchar(10),
+ephone varchar(10),
+esalary numeric,
+depid varchar(10)
+);//DML
+insert into EmployeeInfo values(1010,'John','Miami','9090909',10000,'D001');
+insert into EmployeeInfo values(1011,'George','Miami','9090933',10000,'D001');
+insert into EmployeeInfo values(1012,'Antham','Phoenix','9090922',12000,'D002');
+insert into EmployeeInfo values(1013,'Jonathan','N-York','9090444',13000,'D001');
+insert into EmployeeInfo values(1014,'Samuel','N-York','9090966',20000,'D002');
+insert into EmployeeInfo values(1015,'Ajay','Miami','9090111',14000,'D001');
+insert into EmployeeInfo values(1016,'Abraham','Phoenix','9030909',10000,'D001');
+insert into EmployeeInfo values(1017,'Vinit','Miami','7790909',8000,'D003');
+insert into EmployeeInfo values(1018,'Santa','Phoenix','4490909',9000,'D001');
+insert into EmployeeInfo values(1019,'Paul','Miami','9044309',18000,'D002');
+insert into EmployeeInfo values(1020,'Tushar','N-York','8990909',10500,'D001');
+insert into EmployeeInfo values(1021,'Tim','Miami','6590909',22000,'D003');//DQL
+Select * from EmployeeInfo1) List all employees from phoenix citySELECT * from employeeinfo where ecity = 'Phoenix'2) List all employees from phoenix and N-yorkSELECT * from employeeinfo where ecity = 'Phoenix' or ecity = 'N-York'3) List all employees from phoenix having salary greater than 10000SELECT * from employeeinfo where ecity = 'Phoenix' and esalary > 100004) List all employees from N-York and Miami having salary between 10000 and 15000SELECT * from employeeinfo where (ecity = 'Miami' or ecity = 'N-York')
+and esalary between 10000 and 15000
+
+5) List all employees not living in phoenixSelect * from Employeeinfo where ecity != 'Phoenix'Select * from Employeeinfo where not ecity = 'Phoenix'Select * from Employeeinfo where ecity <> 'Phoenix'6) Display name and salary of employees living in N-YorkSelect
+ename,
+esalary
+from
+employeeinfo
+where ecity = 'N-York'7) Display Name and phone of employees having salary > 15000Select
+ename as employee_name,
+ephone
+from
+employeeinfo
+where esalary > 150008) Count total number of employees living in N-YorkSelect count(*) as Total_N_York_Employees from employeeinfo where ecity='N-York'9) display average salary of employees living in Miamaiselect avg(esalary) as AVerage_Salary_Miami from Employeeinfo where ecity = 'Miami'select round(avg(esalary),0) as AVerage_Salary_Miami from Employeeinfo where ecity = 'Miami'10) display report as below (tax is 10% of salary)
+eid Name salary tax
+Select
+eid,
+ename,
+esalary ,
+esalary * 0.10 as Tax
+from
+employeeinfo
+--------------------------------------- Select
+eid,
+ename,
+esalary ,
+esalary * 0.10 as Tax,
+esalary - (esalary * 0.10) as Net_Salary
+from
+employeeinfo
+----------------
+Select * from employeeinfo11) List all employee living in the city of John
+-nested queries -- subqueriesSelect * from employeeinfo where ecity = (
+Select ecity from employeeinfo where ename = 'John')
+and ename <> 'John'12) update salary of each employee living in n-york by 500update employeeinfo
+set esalary = esalary + 500 where ecity = 'N-York'13) Update city of john to 'Delhi'update employeeinfo
+set ecity ='Delhi' where ename='John'
+14) update salary of employees by 500 who lives in N-york or Phoenixupdate employeeinfo
+set esalary = esalary + 500 where ecity = 'N-York' or ecity ='Phoenix'
+15) delete all employees having less than 10000 salarydelete from employeeinfo where esalary < 10000
+16) delete all employees living in city of Georgedelete from employeeinfo where ename in (
+Select ename from employeeinfo where ecity = (
+Select ecity from employeeinfo where ename = 'George')
+and ename <> 'George')
+------------------------------------------------
+Select * from EmployeeInfocommit17) Count total emplouees for each city.
+--order by --ascending and descending order
+--group by -- summary reportSelect count(eid) from employeeinfoSelect
+ecity,
+count(eid) as Total_Employees
+from
+employeeinfo
+group by ecity18) Total salary expense for each department
+Select
+depid,
+sum(esalary) as Total_Spend
+from
+employeeinfo
+group by depid19) Count total number of employees in each department
+Select
+depid,
+count(*) as Total_Employees
+from
+employeeinfo
+group by depid
+order by Total_Employees desc20) Get Department wise count of employees and also expense on salary
+Select
+depid,
+count(*) as Total_Employees,
+sum(esalary) as Total_Expense
+from
+employeeinfo
+group by depid
+21) list count of employees each department has. Count only if total number of employees are more
+2Select
+depid,
+count(eid) as Total_Employees
+from
+employeeinfo
+group by depid
+having count(eid) > 2=============================================================
+DDL,DML,DQL
+create table
+drop table
+delete table
+select
+distinct
+unique
+not null, check , unique
+order by
+group by
+having
+insert , update and delete
+sub queries
+aggregate -max,min,count,average,sum,sqrt
+queries using dual --
+arithmetic operations in select statement
+calculated columns============================================================
+--SET operationcreate table EIndia
+(
+eid numeric,
+ename varchar(10),
+esal numeric
+);insert into EIndia values(1,'A',1000);
+insert into EIndia values(2,'B',1000);
+insert into EIndia values(3,'C',1000);create table EUSA
+(
+eid numeric,
+ename varchar(10),
+esal numeric
+);insert into EUSA values(100,'X',2000);
+insert into EUSA values(200,'Y',2000);
+insert into EUSA values(300,'Z',2000);
+insert into EUSA values(3,'C',1000);Set-operators:
+union --> unique set of records
+union all --> gives all records
+intersect --> common rows from set of tables
+minus -- first table rows minus second table rows or unique records of first table with second tableSelect * from EIndia
+minus
+Select * from EUSA;===========================================================DBMS------------------------> RDBMSprimary key --> Constraint --> 1) will not allow null, 2) no duplicates
+3) can be referred by other table
+Foreign key ---> constraint --> used to refer another table, or it used to link one table to
+another table
+create table employee
+(
+eid numeric primary key,
+ename varchar(10) not null,
+ecity varchar(10) not null,
+esalary numeric not null
+);
+insert into employee values(1,'John','Phoenix',20000);
+insert into employee values(2,'George','Phoenix',30000);
+insert into employee values(3,'Tom','N-York',25000);
+insert into employee values(4,'Tim','Phoenix',22000);create table eHobby
+(
+hid numeric primary key,
+hname varchar(10) not null,
+eid numeric references employee(eid)
+);
+insert into eHobby values(901,'TT',1);
+insert into eHobby values(902,'FB',1);
+insert into eHobby values(903,'VM',2);
+insert into eHobby values(904,'TT',1);
+insert into eHobby values(905,'PVG',2);
+insert into eHobby values(906,'TT',3);
+insert into eHobby values(907,'FB',2);
+Select * from employee
+Select * from ehobby21) List ename,ecity and hobby name
+=====================================================
+Joins
+-----equi,natural
+======================================================
+--> below query generates carticean output (first table multiple by second table rowsSelect
+ename,
+ecity,
+hname
+from
+employee, ehobbySelect
+ename,
+ecity,
+hname
+from
+employee, ehobby
+where
+employee.eid = ehobby.eid
+Select
+ename,
+ecity,
+hname
+from
+employee e, ehobby h
+where
+e.eid = h.eid
+Select
+e.ename,
+e.ecity,
+h.hname,
+e.eid
+from
+employee e, ehobby h
+where
+e.eid = h.eidSelect
+e.ename,
+e.ecity,
+h.hname,
+e.eid
+from
+employee e
+join
+ehobby h
+on
+e.eid = h.eid
+
+
+java oracle c++ 
