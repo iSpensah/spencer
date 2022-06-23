@@ -1,0 +1,402 @@
+$ docker swarm init --advertise-addr=192.168.0.17
+Manager node or leader node
+To add a worker to this swarm, run the following command:
+ docker swarm join --token SWMTKN-1-1osay4kyr0d1pxk2q4mhr68v2vcpubsy36ahuoy25r66mj37q9-au18gqia0fmn11cq5uankx2hg 192.168.0.17:2377
+
+$ docker network ls
+NETWORK ID     NAME              DRIVER    SCOPE
+fc6b9dd2f5e4   bridge            bridge    local
+1a6709a9caee   docker_gwbridge   bridge    local
+a3e1d5da5184   host              host      local
+h0vs1u2odmm1   ingress           overlay   swarm
+65d615080aec   none              null      local
+[node2] (local) root@192.168.0.16 ~
+$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+05a07b1855ff   bridge    bridge    local
+c4f52e3753ad   host      host      local
+2379998855c6   none      null      local
+[node2] (local) root@192.168.0.16 ~
+[node2] (local) root@192.168.0.16 ~
+$ docker node ls
+Error response from daemon: This node is not a swarm manager. Use "docker swarm init" or "docker swarm join" to connect this node to swarm and try again.
+
+$ docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+m5h1nyi6ky3nvdskusf5tmvt2 *   node1      Ready     Active         Leader           20.10.0
+xx1u6mkcro1dptw9uk4813hkm     node2      Ready     Active                          20.10.0
+mzwyq911c080e41zrt84pw2lh     node3      Ready     Active                          20.10.0
+fkz58m9z0rig6ec2qbym6k3ab     node4      Ready     Active                          20.10.0
+uevrwhscc3q32zs1oc6b9xe7b     node5      Ready     Active                          20.10.0
+
+[node1] (local) root@192.168.0.17 ~
+$ docker node promote node2 node3 node4 node5
+Node node2 promoted to a manager in the swarm.
+Node node3 promoted to a manager in the swarm.
+Node node4 promoted to a manager in the swarm.
+Node node5 promoted to a manager in the swarm.
+
+[node2] (local) root@192.168.0.16 ~
+$ docker node demote node3
+Manager node3 demoted in the swarm.
+[node2] (local) root@192.168.0.16 ~
+$ 
+
+$ docker service --help
+
+Usage:  docker service COMMAND
+
+Manage services
+
+Commands:
+  create      Create a new service
+  inspect     Display detailed information on one or more services
+  logs        Fetch the logs of a service or task
+  ls          List services
+  ps          List the tasks of one or more services
+  rm          Remove one or more services
+  rollback    Revert changes to a service's configuration
+  scale       Scale one or multiple replicated services
+  
+   Update a service
+
+$ docker service create --name p-nginx --replicas 3 --publish 1111:80 nginx
+
+[node2] (local) root@192.168.0.16 ~
+$ docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+qshnaf4iramz   p-nginx   replicated   3/3        nginx:latest   *:1111->80/tcp
+[node2] (local) root@192.168.0.16 ~
+$ 
+[node2] (local) root@192.168.0.16 ~
+$ docker service ps p-nginx
+ID             NAME        IMAGE          NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+5p1g3nrv1c0o   p-nginx.1   nginx:latest   node4     Running         Running 31 seconds ago             
+wap32rxxt68d   p-nginx.2   nginx:latest   node5     Running         Running 32 seconds ago             
+ocwlqzb2ssi6   p-nginx.3   nginx:latest   node3     Running         Running 31 seconds ago             
+[node2] (local) root@192.168.0.16 ~
+
+
+
+[node3] (local) root@192.168.0.14 ~
+$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS          PORTS     NAMES
+7e7563a92b93   nginx:latest   "/docker-entrypoint.…"   About a minute ago   Up 59 seconds   80/tcp    p-nginx.3.ocwlqzb2ssi60ebxhlgj14biy
+[node3] (local) root@192.168.0.14 ~
+$ docker stop 7e7563a92b93 
+7e7563a92b93
+[node3] (local) root@192.168.0.14 ~
+
+
+$ docker service ps p-nginx
+ID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE                ERROR     PORTS
+5p1g3nrv1c0o   p-nginx.1       nginx:latest   node4     Running         Running about a minute ago             
+wap32rxxt68d   p-nginx.2       nginx:latest   node5     Running         Running about a minute ago             
+evhiybhvvoa0   p-nginx.3       nginx:latest   node1     Running         Running 5 seconds ago                  
+ocwlqzb2ssi6    \_ p-nginx.3   nginx:latest   node3     Shutdown        Complete 18 seconds ago  
+
+
+$ docker service scale p-nginx=9
+
+[node3] (local) root@192.168.0.14 ~
+$ docker service ps p-nginxID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE                 ERROR     P
+ORTS
+5p1g3nrv1c0o   p-nginx.1       nginx:latest   node4     Running         Running 2 minutes ago                   
+wap32rxxt68d   p-nginx.2       nginx:latest   node5     Running         Running 2 minutes ago                   
+evhiybhvvoa0   p-nginx.3       nginx:latest   node1     Running         Running about a minute ago              
+ocwlqzb2ssi6    \_ p-nginx.3   nginx:latest   node3     Shutdown        Complete about a minute ago             
+1m0nnz5nko3u   p-nginx.4       nginx:latest   node1     Running         Running 23 seconds ago                  
+uaov4z1x1zrc   p-nginx.5       nginx:latest   node4     Running         Running 24 seconds ago                  
+xy3h7kac3bk0   p-nginx.6       nginx:latest   node2     Running         Running 14 seconds ago                  
+mxqxmn2fjips   p-nginx.7       nginx:latest   node3     Running         Running 20 seconds ago                  
+zbwh72n9761z   p-nginx.8       nginx:latest   node3     Running         Running 20 seconds ago                  
+7x31wulixx17   p-nginx.9       nginx:latest   node5     Running         Running 24 seconds ago                  
+[node3] (local) root@192.168.0.14 ~
+$ 
+
+
+$ docker service inspect p-nginx
+[
+    {
+        "ID": "qshnaf4iramzva9gx7b90nbch",
+        "Version": {
+            "Index": 85
+        },
+        "CreatedAt": "2022-06-21T03:53:16.624546009Z",
+        "UpdatedAt": "2022-06-21T03:56:00.635164341Z",
+        "Spec": {
+            "Name": "p-nginx",
+            "Labels": {},
+            "TaskTemplate": {
+                "ContainerSpec": {                    "Image": "nginx:latest@sha256:2bcabc23b45489fb0885d69a06ba1d648aeda973fae7bb981bafbb884165e51
+4",
+                    "Init": false,
+                    "StopGracePeriod": 10000000000,
+                    "DNSConfig": {},
+                    "Isolation": "default"
+                },
+                "Resources": {
+                    "Limits": {},
+                    "Reservations": {}
+                },
+                "RestartPolicy": {
+                    "Condition": "any",
+                    "Delay": 5000000000,
+                    "MaxAttempts": 0
+                },
+                "Placement": {
+                    "Platforms": [
+                        {
+                            "Architecture": "amd64",
+                            "OS": "linux"
+                        },
+                        {
+                            "OS": "linux"
+                        },
+                        {
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "arm64",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "386",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "mips64le",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "ppc64le",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "s390x",
+                            "OS": "linux"
+                        }
+                    ]
+                },
+                "ForceUpdate": 0,
+                "Runtime": "container"
+            },
+            "Mode": {
+                "Replicated": {
+                    "Replicas": 9
+                }
+            },
+            "UpdateConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "RollbackConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "EndpointSpec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 80,
+                        "PublishedPort": 1111,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            }
+        },
+        "PreviousSpec": {
+            "Name": "p-nginx",
+            "Labels": {},
+            "TaskTemplate": {
+                "ContainerSpec": {
+                    "Image": "nginx:latest@sha256:2bcabc23b45489fb0885d69a06ba1d648aeda973fae7bb981bafbb884165e514",
+                    "Init": false,
+                    "DNSConfig": {},
+                    "Isolation": "default"
+                },
+                "Resources": {
+                    "Limits": {},
+                    "Reservations": {}
+                },
+                "Placement": {
+                    "Platforms": [
+                        {
+                            "Architecture": "amd64",
+                            "OS": "linux"
+                        },
+                        {
+                            "OS": "linux"
+                        },
+                        {
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "arm64",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "386",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "mips64le",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "ppc64le",
+                            "OS": "linux"
+                        },
+                        {
+                            "Architecture": "s390x",
+                            "OS": "linux"
+                        }
+                    ]
+                },
+                "ForceUpdate": 0,
+                "Runtime": "container"
+            },
+            "Mode": {
+                "Replicated": {
+                    "Replicas": 3
+                }
+            },
+            "EndpointSpec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 80,
+                        "PublishedPort": 1111,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            }
+        },
+        "Endpoint": {
+            "Spec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 80,
+                        "PublishedPort": 1111,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            },
+            "Ports": [
+                {
+                    "Protocol": "tcp",
+                    "TargetPort": 80,
+                    "PublishedPort": 1111,
+                    "PublishMode": "ingress"
+                }
+            ],
+            "VirtualIPs": [
+                {
+                    "NetworkID": "h0vs1u2odmm1e58l7dwv3f2hd",
+                    "Addr": "10.0.0.7/24"
+                }
+            ]
+        }
+    }
+]
+[node3] (local) root@192.168.0.14 ~
+
+$ docker service logs p-nginx
+
+[node3] (local) root@192.168.0.14 ~
+$ docker service rm p-nginx
+p-nginx
+[node3] (local) root@192.168.0.14 ~
+$ docker service ls
+ID        NAME      MODE      REPLICAS   IMAGE     PORTS
+[node3] (local) root@192.168.0.14 ~
+$ 
+
+$ docker service create --name p-tea --replicas 7 --publish 3333:80 pradeepch82/tea:1.1
+x7kipr71izpek7n4y5cohzkat
+overall progress: 7 out of 7 tasks 
+1/7: running   [==================================================>] 
+2/7: running   [==================================================>] 
+3/7: running   [==================================================>] 
+4/7: running   [==================================================>] 
+5/7: running   [==================================================>] 
+6/7: running   [==================================================>] 
+7/7: running   [==================================================>] 
+verify: Service converged 
+[node3] (local) root@192.168.0.14 ~
+$ docker service ps p-tea
+ID             NAME      IMAGE                 NODE      DESIRED STATE   CURRENT STATE                ERROR     P
+ORTS
+iartmdcr43ma   p-tea.1   pradeepch82/tea:1.1   node4     Running         Running about a minute ago             
+7hxlfo2to1x6   p-tea.2   pradeepch82/tea:1.1   node5     Running         Running about a minute ago             
+dxcx3up2dy0s   p-tea.3   pradeepch82/tea:1.1   node1     Running         Running about a minute ago             
+zpfzaormd5pv   p-tea.4   pradeepch82/tea:1.1   node2     Running         Running about a minute ago             
+p1uicrytltes   p-tea.5   pradeepch82/tea:1.1   node1     Running         Running about a minute ago             
+ymrfpfnytwh9   p-tea.6   pradeepch82/tea:1.1   node2     Running         Running about a minute ago             
+7mr2thykd6mu   p-tea.7   pradeepch82/tea:1.1   node3     Running         Running about a minute ago             
+[node3] (local) root@192.168.0.14 ~
+
+$ docker service update --image pradeepch82/tea:1.2 p-tea
+p-tea
+overall progress: 7 out of 7 tasks 
+1/7: running   [==================================================>] 
+2/7: running   [==================================================>] 
+3/7: running   [==================================================>] 
+4/7: running   [==================================================>] 
+5/7: running   [==================================================>] 
+6/7: running   [==================================================>] 
+7/7: running   [==================================================>] 
+verify: Service converged 
+
+$ docker service update --image pradeepch82/tea:1.3 p-tea
+p-tea
+overall progress: 7 out of 7 tasks 
+1/7: running   [==================================================>] 
+2/7: running   [==================================================>] 
+3/7: running   [==================================================>] 
+4/7: running   [==================================================>] 
+5/7: running   [==================================================>] 
+6/7: running   [==================================================>] 
+7/7: running   [==================================================>] 
+verify: Service converged 
+[node3] (local) root@192.168.0.14 ~
+$ 
+
+
+[node3] (local) root@192.168.0.14 ~
+$ docker service rollback p-tea
+p-tea
+rollback: manually requested rollback 
+overall progress: rolling back update: 7 out of 7 tasks 
+1/7: running   [>                                                  ] 
+2/7: running   [>                                                  ] 
+3/7: running   [>                                                  ] 
+4/7: running   [>                                                  ] 
+5/7: running   [>                                                  ] 
+6/7: running   [>                                                  ] 
+7/7: running   [>                                                  ] 
+verify: Service converged 
+[node3] (local) root@192.168.0.14 ~
+[node1] (local) root@192.168.0.17 ~
+$ docker swarm leave
+Error response from daemon: You are attempting to leave the swarm on a node that is participating as a manager. T
+he only way to restore a swarm that has lost consensus is to reinitialize it with `--force-new-cluster`. Use `--f
+orce` to suppress this message.
+[node1] (local) root@192.168.0.17 ~
+$ docker swarm leave --force
+Node left the swarm.
+[node1] (local) root@192.168.0.17 ~
+$ docker node demote node2 node3 node4
+$docker swarm leave
+
+docker service

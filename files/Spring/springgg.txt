@@ -1,0 +1,45 @@
+spring - for mobile, web, security, batch 
+there are differentt spring for different applications. mobile, web, security, batch 
+
+getters and setters
+
+09359717292 -- ms. claire. 
+beans are nothing but reusable classes of your application 
+context.getbean
+
+ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+Employee obj = (Employee)context.getBean("y");
+obj.displayEmployee()
+
+singleton vs prototype
+>>only one onbjects gets create in memory
+default is singleton 
+
+>>prototype . create a new object everytime you call getbean
+scope is protoype
+
+autowire byType or byName (establising relationship between beans)
+
+generics in java collection
+null object will get nullpointer exception
+java automatically set the variables to zero or null
+
+
+steps  Spring teplating
+1. create package 
+2. take JDMC library reference.
+3. configure JdbcTEmplate bean and Datasource bean //connect to oracle
+<bean id="tmp" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="ds"/>
+</bean>
+
+ <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+<property name="username" value="system" />
+<property name="password" value="syntel123$" />
+</bean>
+4. Load JdbcTemplate bean (Inject bean in your application)
+5. create table and insert records 
+6.. creating entitly class for each table   
+7.) create MapperClass Mapperclass will map database to class 

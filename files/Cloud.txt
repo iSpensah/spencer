@@ -1,0 +1,64 @@
+benefits of using cloud services 
+High availability withouth any downtime benefit
+faulty tolerance/ backup in the nearest region
+agility // ability to react quickly. 
+Scalability/ increase the resources, perform the opration inthe manual fashion
+elasticity- peroform the operations in the automatic fashio
+Disaster recovery -- 
+latency - slowness, network issue. jitter. 
+whenever app is facing slowness latency. high availability
+fault tolerance.
+productivity - 
+global reach - reach the audienc across the globe/ 
+security identitiy access management control// level off access control
+
+economies of scale -- the "ability" to reduce costs and gain efficieny
+Computing power Servers or web application used for computation 
+and processing tasks 
+Storage: files adatabases. 
+Networking: Secure connections between the cloud provider and the company. 
+Analytics: Visualizing telemetry and performance data. 
+
+consumption based model - the end uses only pay for the resources that they use
+No upfront costs No need to puchase and manage costly 
+Capital Expenditure(CapEx:)
+
+CapEx computing costs: A typical on premises datacenter includes costs such as 
+Server costs 
+Storage costs 
+Network costs datacenter infrastructure costs 
+Operational Expenditure OpEx:
+
+There's no upfront cost. 
+A cloud deployment model defines where the data is stored and how 
+https://portal.azure.com
+
+Assignment 1
+questions 
+1. which term from the list below would be viewed as benefits
+of using vloud services? 
+b. Elasticity
+2.virtual machines
+3. serverless computing
+4. c. virtual machines, containers, serverless computing
+5. a. fault tolerance 
+6. elasticity
+7. scalability-
+a cloud service that performs quickly when it increases 
+a cloud service that can be accessed quickly to the internet 
+
+Assignment 2
+1. economies of scale
+2. supply and demand. 
+3.software as a service 
+4. b
+5. a. 
+6. b.
+7. a
+8. b. 
+9. a. 
+10. c 
+
+
+
+

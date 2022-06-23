@@ -1,0 +1,25 @@
+moletic application 
+SDLC Agile 
+
+Agile 
+part by part 
+e-commerce
+browser
+cart placer order--COD
+
+Service Team A
+service nothing but a functionality
+
+Webservice
+BillDesk
+
+WEbservice:
+Flight booking System .NET Platform
+BillDesk:
+Java
+Billdesk: 
+Angular:
+
+
+
+

@@ -1,0 +1,83 @@
+select * from transaction; 
+select * from account;
+select * from customer;
+
+create table CustomerInfo
+(
+cid numeric primary key,
+cname varchar(10) not null,
+ccity varchar(10) not null,
+caccbalance numeric not null
+);
+
+insert into customerinfo values(1,'John','Phx',20000);
+insert into customerinfo values(2,'Joe','Phx',20000);
+insert into customerinfo values(3,'Vincy','N-ville',20000);
+insert into customerinfo values(4,'Sam','N-York',20000);
+insert into customerinfo values(5,'Marvel','Phx',20000);
+insert into customerinfo values(6,'Mac','Phx',20000);
+commit;
+
+select * from CustomerInfo;
+
+commit;
+
+select * from product_tbl where categoryname in ('Action','Adventure');
+select * from product_tbl;
+
+update product_tbl set categoryname = 'Simulation' where productname = 'The Sims 4';
+
+commit;
+
+select * from ctgry_tbl;
+Select unique(c.categoryname) from product_tbl p join ctgry_tbl c on p.categoryid = c.categoryid;
+
+select * from ctgry_tbl;
+
+select * from product_tbl;
+
+alter table product_tbl drop column categoryname;
+
+desc product_tbl;
+
+
+update product_tbl set imagepath = 'https://images.launchbox-app.com/7ee83862-fc79-4bfa-b92c-baa698b8da7d.png' where productid = 2002;
+
+select * from product_tbl;
+commit;
+
+select * from product_tbl order by productname asc;
+
+update product_tbl set imagepath = 'https://asset.vg247.com/red_dead_redemption_2_may_screens_16.jpg/BROK/resize/1920x1920%3E/format/jpg/quality/80/red_dead_redemption_2_may_screens_16.jpg' where productname = 'Red Dead Redemption 2';
+update product_tbl set imagepath = 'https://cdn.mos.cms.futurecdn.net/jpaa7LSutbsu5YdZBtAUff-970-80.jpg.webp' where productname = 'Assassins Creed Vahalla';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/400/thumb-1920-400987.jpg' where productname = 'Atelier Ryza Ever Darkness and The Secret Hideout';
+update product_tbl set imagepath = 'https://www.ungeek.ph/wp-content/uploads/2020/03/borderlands_3_steam_special_offer-696x364.jpg' where productname = 'Borderlands 3';
+update product_tbl set imagepath = 'https://staticg.sportskeeda.com/editor/2020/07/82d4f-15959951912308.png' where productname = 'COD Modern Warfare';
+update product_tbl set imagepath = 'https://images.pushsquare.com/1eefb29f19a84/catherine-ps4-playstation-4-1.900x.jpg' where productname = 'Catherine Full Body (Eng Version)';
+update product_tbl set imagepath = 'https://gamecut.com/wp-content/uploads/2017/06/dark-souls-iii-the-fire-fades-ed-1024x576.jpg' where productname = 'Dark Souls III The Fire Fades';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/224/thumb-224217.jpg' where productname = 'Devil May Cry 5';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/205/thumb-205153.jpg' where productname = 'Doom Eternal';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/184/thumb-184701.jpg' where productname = 'Final Fantasy Type -0';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/287/thumb-287303.jpg' where productname = 'Final Fantasy VII Remake';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/207/thumb-207462.png' where productname = 'God Eater 2 Rage Burst';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/199/thumb-199361.png' where productname = 'Harvest Moon One World';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/157/thumb-1920-157018.jpg' where productname = 'Horizon Zero Dawn Complete Edition';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/408/thumb-1920-40899.png' where productname = 'Kingdom Hearts 3';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/195/195765.jpg' where productname = 'Metro Exodus';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/171/thumb-1920-171184.jpg' where productname = 'Monster Hunter Generations Ultimate';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/186/thumb-1920-186941.png' where productname = 'Ni No Kuni Wrath of the White Witch';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/129/thumb-1920-129453.jpg' where productname = 'Nier: Automata';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/425/thumb-1920-42524.jpg' where productname = 'No Heroes Allowed';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/129/thumb-1920-129457.jpg' where productname = 'Persona 5 Royal';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/384/thumb-1920-38407.jpg' where productname = 'Prey';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/340/thumb-1920-340632.jpg' where productname = 'Resident Evil 3 Remake';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/206/thumb-1920-206518.jpg' where productname = 'Sekiro Shadows Die Twice';
+update product_tbl set imagepath = 'http://3.bp.blogspot.com/-9uLrEqb0M4c/UXiNePELWEI/AAAAAAAAALU/o7IuM5LX3c4/s320/slenderman_by_jizamarri-d584kpx.jpg' where productname = 'Slenderman';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/317/thumb-1920-317494.jpg' where productname = 'Star Wars Jedi Fallen Order';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/229/thumb-1920-22910.jpg' where productname = 'Subnautica';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/155/thumb-1920-155649.jpg' where productname = 'Summertime Saga';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/501/thumb-1920-50194.png' where productname = 'The Sims 4';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/246/thumb-1920-24617.jpg' where productname = 'The Witcher 3 Wild Hunt Complete Edition';
+update product_tbl set imagepath = 'https://picfiles.alphacoders.com/752/thumb-1920-75239.jpg' where productname = 'YS Memories of Celceta';
+
+commit;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+
+	<bean id="addBean" class="pkg.Address">
+		<property name="street" value="A-L-Street"/>
+		<property name="state" value="CL"/>
+		<property name="pincode" value="898000"/>
+	</bean>
+	
+	<bean id="empBean" class="pkg.Employee">
+		<property name="eid" value="8900"/>
+		<property name="ename" value="jonathan"/>
+		<property name="esalary" value="50000"/>
+		<property name ="eaddress" ref="addBean"/>
+	
+	<property name ="hobbies">
+	<list>
+	<value>Pf</value>
+	<value>PHotography</value>
+	<value>Travelling</value>
+	<value>Watching</value>
+	<value>Travelling</value>
+	</list>
+	</property>
+	</bean>
+	
+</beans>

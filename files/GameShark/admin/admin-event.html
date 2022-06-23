@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Material Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class='bx bxs-store-alt bx-spin' ></i>
+        <span class="logo_name">Shopping</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="./admin-dashboard.html">
+            <i class="bx bx-grid-alt icon"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-product.html">
+            <i class="bx bx-box icon"></i>
+            <span class="links_name">Product</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-coupon.html">
+            <i class="bx bxs-coupon icon"></i>
+            <span class="links_name">Coupon</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-event.html" class="active">
+            <i class="bx bxs-calendar-event icon"></i>
+            <span class="links_name">Event</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="login.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Promotional Event Management</span>
+        </div>
+        <!-- <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div> -->
+        <div class="profile-details">
+          <img src="./assets/coco.jpg" alt="" />
+          <span class="admin_name">Coco Martin</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+
+        <div class="home">
+          <div class="header">
+            <a class="btn btn-primary mb-2 mt-3" id="click" href="#" role="button">Add Promotional Events</a>
+            
+            <!-- <form class="form-inline">
+              <input id="searchBox" class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <i class='search-icon bx bx-search-alt-2 bg-dark p-2 text-light'></i>
+            </form> -->
+            
+            <div class="search-box mb-2 mt-2 shadow-sm">
+              <input id="searchBox" class ="searchbtn" type="text" placeholder="Search...">
+              <i class='bx bx-search' ></i>
+            </div>
+            
+          </div>
+    
+          <div class="product-manage">
+            <table class="table shadow-sm" id="tableData">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope ="col" onclick="eventData.sort(dynamicSort('EventID')), loadTableData(eventData)">ID</th>
+                  <th scope ="col" onclick="eventData.sort(dynamicSort('EventName')), loadTableData(eventData)">Event Name</th>
+                  <th scope ="col" onclick="eventData.sort(dynamicSort('startDate')), loadTableData(eventData)">Start Date</th>
+                  <th scope ="col" onclick="eventData.sort(dynamicSort('endDate')), loadTableData(eventData)">End Date</th>
+                  <th scope ="col" >Action</th>
+              </tr>
+              </thead>
+              <tbody class="tablebody">
+              </tbody>
+            </table>
+          </div>
+        
+      </div>
+    </section>
+  </body>
+  <div class="bg-modal">
+    <div class="modal-content">
+      <div class="close">+</div>
+      <h2>Add Promotional Event</h2>
+      <form>
+        <input type="text" class="form-control mt-2 pl-3" placeholder="Enter Event Name">
+        <input type="date" class="form-control mt-2 pl-3" placeholder="Enter Start Date">
+        <input type="date" class="form-control mt-2 pl-3" placeholder="Enter End Date">
+      </form>
+      <button type="button" class="btn btn-primary btn-lg btn-block mt-2">Add Event</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block mt-2">Cancel</button>
+    </div>
+  </div>
+
+  <div class="bg-modal1">
+    <div class="modal-content" >
+        <div class="close" onClick="modalClose()">+</div>
+        <h2>Update Promotional Event</h2>
+      <form>
+        <input type="text" class="form-control mt-2 pl-3" placeholder="Enter Event Name">
+        <input type="date" class="form-control mt-2 pl-3" placeholder="Enter Start Date">
+        <input type="date" class="form-control mt-2 pl-3" placeholder="Enter End Date">
+      </form>
+      <button type="button" class="btn btn-info btn-lg btn-block mt-2">Update Event</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block mt-2">Cancel</button>
+    </div>
+  </div>
+
+  <div class="modal-delete">
+    <div class="modal-content" >
+      <div class="close" onClick="modalClose()">+</div>
+      <h2>Delete Coupon</h2>
+      <p>Are you sure you want to delete this coupon?</p>
+    
+      <button type="button" class="btn btn-danger btn-lg btn-block mt-2">Delete Event</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block mt-2">Cancel</button>
+  </div>
+  </div>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    };
+
+     
+  </script>
+
+  <script src="./js/eventpage.js"></script>
+</html>

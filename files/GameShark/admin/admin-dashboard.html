@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class='bx bxs-store-alt bx-spin' ></i>
+        <span class="logo_name">Shopping</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="./admin-dashboard.html" class="active">
+            <i class="bx bx-grid-alt icon"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-product.html">
+            <i class="bx bx-box icon"></i>
+            <span class="links_name">Product</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-coupon.html">
+            <i class="bx bxs-coupon icon"></i>
+            <span class="links_name">Coupon</span>
+          </a>
+        </li>
+        <li>
+          <a href="./admin-event.html">
+            <i class="bx bxs-calendar-event icon"></i>
+            <span class="links_name">Event</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="login.html">
+            <i class="bx bx-log-out icon"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        <!-- <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div> -->
+        <div class="profile-details">
+          <img src="./assets/coco.jpg" alt="" />
+          <span class="admin_name">Coco Martin</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="summary">
+          <div class="card shadow">
+            <div class="container">
+              <div class="row">
+                <div class="col-8">
+                  <h3>101</h3>
+                  <h5>Number of Products</h5>
+                </div>
+                <div class="col-4">
+                  <i class="bx bx-donate-heart icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shadow">
+            <div class="container">
+              <div class="row">
+                <div class="col-8">
+                  <h3>101</h3>
+                  <h5>Number of Coupons</h5>
+                </div>
+                <div class="col-4">
+                  <i class="bx bxs-coupon icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shadow">
+            <div class="container">
+              <div class="row">
+                <div class="col-8">
+                  <h3>101</h3>
+                  <h5>Number of Events</h5>
+                </div>
+                <div class="col-4">
+                  <i class="bx bxs-calendar-event icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-summary">
+          <table class="table shadow-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" colspan="6">Product Inventory</th>
+              </tr>
+            </thead>
+            <thead class="thead">
+              <tr>
+                <th scope ="col" onclick="productData.sort(dynamicSort('productID')), loadTableData(productData)">ID</th>
+                <th scope ="col" onclick="productData.sort(dynamicSort('productName')), loadTableData(productData)">Product Name</th>
+                <th scope ="col" onclick="productData.sort(dynamicSort('category')), loadTableData(productData)">Category</th>
+                <th scope ="col" onclick="productData.sort(dynamicSort('price')), loadTableData(productData)">Price</th>
+                <th scope ="col" onclick="productData.sort(dynamicSort('companyName')), loadTableData(productData)">Company Name</th>
+                <th scope ="col" onclick="productData.sort(dynamicSort('stock')), loadTableData(productData)">Stock</th> 
+          
+            </tr>
+            </thead>
+            <tbody class="tablebody">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="coupon-event-sum">
+          <div class="coupon-summary">
+            <table class="table shadow-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" colspan="4">Coupon Inventory</th>
+                </tr>
+              </thead>
+              <thead class="thead bg-active">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="event-summary">
+            <table class="table shadow-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" colspan="4">Event Inventory</th>
+                </tr>
+              </thead>
+              <thead class="thead-secondary">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+    </script>
+
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>

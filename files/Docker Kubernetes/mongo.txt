@@ -1,0 +1,60 @@
+$docker run --name a-mongo -p 27017:27017 -d mongo
+
+$docker exec -it a-mongo mongo
+
+>db
+>show dbs;
+>use Employee;
+>db;
+>db.empdata.insert({"ename":"John","city":"PHL"})
+>db.empdata.insert({"ename":"Christain","city":"USA"})
+>db.empdata.find()
+>db.empdata.update({"ename":"Christain"},{$set:{"city":"UK"}})
+>db.empdata.remove({})
+>db
+>show collections;
+>db.empdata.drop()
+>show collections;
+
+container -- docker container 
+imag e-- image a template used to crete images 
+docker hub ---library of image
+
+docker swarm init --advertise -addr=192.168.0.18
+manager node or leader node //
+docker swarm join token SWMTKN
+docker swarm join-token manager 
+
+docker network ls 
+docker node ls
+docker node promote node3 
+docker node demote node3 
+docker network ls 
+docker node promote node4 
+
+docker service create --name p -nginx --replica 3 --publish 1111:80 nginx 
+docker service --help
+docker service ls
+docker service command -- help' 
+docker service ps p-nginx   //list of task
+docker ps
+docker stop
+
+docker service ps p-nginx 
+docker service -help
+docker service scale p-nginx 
+docker service ls 
+docker servcie scale p-nginx=9 
+docker ps 
+docker service ps p-nginx 
+docker service inspect p-nginx
+docker service rm p-nginx 
+docker service -logs 
+docker service ls
+docker service ps
+docker service update --image pradeepch89/tea:1.2 p-tea
+docker service rollback p=tea
+docker node demote node2 node3 node4 node5 
+docker swarm leave
+docker swarm is multiple docker imagees as a single service
+kubernetes when you wan to host an application

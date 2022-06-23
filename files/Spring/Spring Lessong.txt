@@ -1,0 +1,88 @@
+spring boot automates configurations 
+of your project
+on spring intializr
+thymeleaf project so spring will understand HTML pages 
+has mysql driver
+spring initializr  can cnofigure 
+database 
+server 
+dependency libraries. 
+
+
+
+Spring Core
+--Declare beans 
+--Scopes --Singleton -- Prototype
+--autowiring---byName, byType, byContructor, none
+--context ---ApplicationContext, ClasspathXMLAppplicationContext(xml file)
+<bean>
+getBean();
+Object
+Spring Mvc
+dispatcherServelet---front controller ---web.xml
+tomcat file deployment desciptor file web.xml
+Model -- View --- Controller 
+view ---jsp, html 
+model map 
+@Controller
+@RequestMapping
+@PathVariable 
+SpringBoot
+
+
+AOP - Aspect Oriented Programming
+hot to not loading employee bean(business logic) directly ? 
+should use proxy bean first 
+because proxy bean 
+ensure users goto/excute interceptors first only then the empolyee bean
+
+eagerly load objects 
+just declare in bean, spring config.xml/automatically loads objects from a class.
+eagerload vs lazyloading / eager initialization vs lazyloading initialization
+
+lazy-init = false in beans
+
+spring boot automates configurations 
+of your project
+on spring intializr
+thymeleaf project so spring will understand HTML pages 
+has mysql driver
+spring initializr  can cnofigure 
+database 
+server 
+dependency libraries. 
+
+
+
+Spring Core
+--Declare beans 
+--Scopes --Singleton -- Prototype
+--autowiring---byName, byType, byContructor, none
+--context ---ApplicationContext, ClasspathXMLAppplicationContext(xml file)
+<bean>
+getBean();
+Object
+Spring Mvc
+dispatcherServelet---front controller ---web.xml
+tomcat file deployment desciptor file web.xml
+Model -- View --- Controller 
+view ---jsp, html 
+model map 
+@Controller
+@RequestMapping
+@PathVariable 
+SpringBoot
+
+
+AOP - Aspect Oriented Programming
+hot to not loading employee bean(business logic) directly ? 
+should use proxy bean first 
+because proxy bean 
+ensure users goto/excute interceptors first only then the empolyee bean
+
+eagerly load objects 
+just declare in bean, spring config.xml/automatically loads objects from a class.
+eagerload vs lazyloading / eager initialization vs lazyloading initialization
+
+lazy-init = false in beans
+
